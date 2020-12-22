@@ -6,15 +6,25 @@ function overlayy (){
         menu = document.querySelector(".overlay__menu");
     btn.addEventListener('click', ()=>{
         ovr.classList.add("overlay__show");
-        menu.classList.add("overlay__menu_show");
-        soc.classList.add("overlay__social_show");
-        document.body.style.overflow = 'hidden';
+        ovr.addEventListener("transitionend", ()=>{
+            menu.classList.add("overlay__menu_show");
+            soc.classList.add("overlay__social_show");
+            document.body.style.overflow = 'hidden';
+        });
     });  
+    
     cls.addEventListener('click', ()=>{
-        ovr.classList.remove("overlay__show");
         menu.classList.remove("overlay__menu_show");
         soc.classList.remove("overlay__social_show");
+        ovr.classList.remove("overlay__show");
+        ovr.addEventListener("transitionend", ()=>{
+        
+        menu.classList.remove("overlay__menu_show");
+        soc.classList.remove("overlay__social_show");
+
         document.body.style.overflow = '';
+       }); 
+        
     });   
 
 }
