@@ -39,6 +39,37 @@ function overlayy (){
 }
 module.exports = overlayy;
 
+/***/ }),
+
+/***/ "./src/js/parts/up.js":
+/*!****************************!*\
+  !*** ./src/js/parts/up.js ***!
+  \****************************/
+/***/ ((module) => {
+
+function up (){
+    let up = document.querySelector('.up');
+    window.addEventListener('scroll', function(event){
+        let top = window.scrollY;
+        if(top > 1000){
+            up.classList.add('fadeIn');
+            up.classList.remove('fadeOut');
+            
+        }else if(top < 1000){
+            
+            up.classList.add('fadeOut'); 
+            up.addEventListener('transitionend', ()=>{
+                up.classList.remove('fadeIn');
+               
+                 
+            });
+            
+        }
+        
+    });
+}
+module.exports = up;
+
 /***/ })
 
 /******/ 	});
@@ -72,9 +103,10 @@ module.exports = overlayy;
   !*** ./src/js/script.js ***!
   \**************************/
 document.addEventListener('DOMContentLoaded', function(){
-let overlay = __webpack_require__(/*! ./parts/overlay */ "./src/js/parts/overlay.js");
-    
+let overlay = __webpack_require__(/*! ./parts/overlay */ "./src/js/parts/overlay.js"),
+    up = __webpack_require__(/*! ./parts/up */ "./src/js/parts/up.js");
 overlay();
+up();
 });
 })();
 
