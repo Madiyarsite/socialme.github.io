@@ -1,6 +1,38 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/parts/advantages.js":
+/*!************************************!*\
+  !*** ./src/js/parts/advantages.js ***!
+  \************************************/
+/***/ ((module) => {
+
+function adv (){
+    let blc = document.querySelectorAll(".advantages__content");
+    window.addEventListener('scroll', function(){
+            // let a = blc[0].getBoundingClientRect().top;
+            // let b = blc[1].getBoundingClientRect().top;
+            // let c = blc[2].getBoundingClientRect().top;
+            // let d = blc[3].getBoundingClientRect().top;
+            // if(blc < 0){
+            //     blc.forEach((item)=> item.classList.add('easeIn'));
+            // }
+            let c = document.documentElement.clientHeight; 
+            for(let i = 0; i < blc.length; i++){
+               let b = blc[i].getBoundingClientRect().top - c;
+                if(b < 0){
+                    blc[i].classList.add('easeIn');
+                    
+
+                }
+            }
+    });
+    
+}
+module.exports = adv;
+
+/***/ }),
+
 /***/ "./src/js/parts/overlay.js":
 /*!*********************************!*\
   !*** ./src/js/parts/overlay.js ***!
@@ -104,9 +136,11 @@ module.exports = up;
   \**************************/
 document.addEventListener('DOMContentLoaded', function(){
 let overlay = __webpack_require__(/*! ./parts/overlay */ "./src/js/parts/overlay.js"),
-    up = __webpack_require__(/*! ./parts/up */ "./src/js/parts/up.js");
+    up = __webpack_require__(/*! ./parts/up */ "./src/js/parts/up.js"),
+    adv = __webpack_require__(/*! ./parts/advantages */ "./src/js/parts/advantages.js");
 overlay();
 up();
+adv();
 });
 })();
 
