@@ -68,15 +68,13 @@ function deadline (){
                 minutes.textContent = addZero(t.minutes);
                 hours.textContent = addZero(t.hours);
             }
-            if(t.total <= 0){
-                clearInterval(timing);
-                secunds.textContent = '00';
-                minutes.textContent = '00';
-                hours.textContent = '00';
-            }
+            
 
     }
     setClock('timer', deadline);
+
+  
+
 }
 module.exports = deadline;
 
@@ -133,6 +131,38 @@ function overlayy (){
 
 }
 module.exports = overlayy;
+
+/***/ }),
+
+/***/ "./src/js/parts/svg.js":
+/*!*****************************!*\
+  !*** ./src/js/parts/svg.js ***!
+  \*****************************/
+/***/ ((module) => {
+
+function svg(){
+    let svg = document.querySelectorAll(".svg"),
+    crl = document.querySelector(".crl"),
+    crly = document.querySelector(".crly"),
+    crly2 = document.querySelector(".crly2");
+
+
+
+
+
+function ani(){
+let cur = crl.getBoundingClientRect().left,
+        cury = crly.offsetTop,
+        cury2 = crly2.offsetTop;
+svg.forEach((item)=>{
+    item.innerHTML = `<path d="   M 0 10   L 0 10, 0 80, 0 80, 550 80, 550 ${cury2} C 550 ${cury2}, ${cur} 90, 0 ${cury}" stroke="transparent" fill="#e7e7e7"/>`;
+    
+});
+}
+setInterval(ani, 10);
+}
+module.exports = svg;
+
 
 /***/ }),
 
@@ -201,11 +231,13 @@ document.addEventListener('DOMContentLoaded', function(){
 let overlay = __webpack_require__(/*! ./parts/overlay */ "./src/js/parts/overlay.js"),
     up = __webpack_require__(/*! ./parts/up */ "./src/js/parts/up.js"),
     adv = __webpack_require__(/*! ./parts/advantages */ "./src/js/parts/advantages.js"),
-    deadline = __webpack_require__(/*! ./parts/deadline */ "./src/js/parts/deadline.js");
+    deadline = __webpack_require__(/*! ./parts/deadline */ "./src/js/parts/deadline.js"),
+    svg = __webpack_require__(/*! ./parts/svg */ "./src/js/parts/svg.js");
 overlay();
 up();
 adv();
 deadline();
+svg();
 });
 })();
 

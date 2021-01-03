@@ -33,14 +33,12 @@ function deadline (){
                 minutes.textContent = addZero(t.minutes);
                 hours.textContent = addZero(t.hours);
             }
-            if(t.total <= 0){
-                clearInterval(timing);
-                secunds.textContent = '00';
-                minutes.textContent = '00';
-                hours.textContent = '00';
-            }
+            
 
     }
     setClock('timer', deadline);
+
+  
+
 }
 module.exports = deadline;
